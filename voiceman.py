@@ -34,17 +34,11 @@ stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, fram
 stream.start_stream()
 
 while True:
-    CurrentTime = time.time()
-    # print(f"{CurrentTime}  1")
+    CurrentTime = time.time()    
     data = stream.read(4000, exception_on_overflow=False)
-    CurrentTime = time.time() - CurrentTime
-    print(f"{CurrentTime}  2")
-    CurrentTime = time.time()
     if len(data) == 0:
         break
     if rec.AcceptWaveform(data):
-        CurrentTime = time.time() - CurrentTime
-        print(f"{CurrentTime}  3")        
         x=json.loads(rec.Result())        
         if x["text"] == "ассистент":
             stream.stop_stream()
@@ -66,7 +60,7 @@ while True:
                             per_match = similarity(genuine[i], x["text"])
                             id = i
                         i += 1
-                    if per_match > 0.6:
+                    if per_match > 0.5:
                         put = f'lib/{id}.txt'
                         f = open(put, 'r', encoding="utf-8")
                         pyperclip.copy(f.read())
@@ -79,10 +73,7 @@ while True:
 
 
 
-            playsound.playsound("stop.mp3", block = False)
-            CurrentTime = time.time() - CurrentTime
-            print(f"{CurrentTime}  5")
-            CurrentTime = time.time()
+            playsound.playsound("stop.mp3", block = False)            
 
     # print("new_iteration")
 
