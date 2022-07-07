@@ -14,6 +14,18 @@ if not os.path.exists("model"):
 
 import pyaudio
 
+import difflib
+def similarity(s1, s2):  
+  matcher = difflib.SequenceMatcher(None, s1, s2)
+  return matcher.ratio()
+genuine = (
+    "",
+    "гет запрос",
+    "пост запрос",
+    "крит реакт эп",
+    "крит дата бэйс",
+)
+
 model = Model("model")
 rec = KaldiRecognizer(model, 16000)
 
@@ -45,9 +57,28 @@ while True:
                 data = stream.read(4000, exception_on_overflow=False)
                 if rec.AcceptWaveform(data):
                     x=json.loads(rec.Result())
+
+                    per_match = similarity(genuine[0], x["text"])    
+                    i = 0
+                    id = 0
+                    while i < len(genuine):
+                        if (per_match < similarity(genuine[i], x["text"])):
+                            per_match = similarity(genuine[i], x["text"])
+                            id = i
+                        i += 1
+                    if per_match > 0.6:
+                        put = f'lib/{id}.txt'
+                        f = open(put, 'r', encoding="utf-8")
+                        pyperclip.copy(f.read())
+                    
+                    print(id, per_match)
+
                     if x["text"] == "ассистент":
                         print(x["text"])
                         pyperclip.copy('hello world!')
+
+
+
             playsound.playsound("stop.mp3", block = False)
             CurrentTime = time.time() - CurrentTime
             print(f"{CurrentTime}  5")
