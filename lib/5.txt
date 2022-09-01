@@ -1,1 +1,59 @@
-крит дата бэйс
+// Компонента - функция возвращающая разметку (JSX)
+// Компонента - это ТЕГ
+// Компоненту можно вкладывать в другую компоненту
+
+import App from './App';
+
+//********КОМПОНЕНТА****************
+const App = () => {
+	return (
+		<div className="App">
+			<ul>
+				<li>css</li>
+				<li>html</li>
+				<li>js</li>
+				<li>react</li>
+			</ul>
+		</div>
+	);
+}
+//**********************************
+
+
+// <App /> Вызов компоненты
+
+const rootrend = ReactDOM.createRoot(document.getElementById('root'));
+// rootrend - переменная с адресом куда помещать JSX код 
+
+Отрисовка компонены <App /> по адресу root
+
+rootrend.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+Компоненты желательно дробить.
+
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <Technologies />
+    </div>    
+  );
+}
+
+const Technologies = () => {
+  return (
+    <div className="App">      
+    </div>
+  );
+}
+
+const Header = () => {
+  return (
+    <div>
+    </div>);
+}

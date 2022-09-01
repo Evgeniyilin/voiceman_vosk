@@ -1,1 +1,285 @@
-крит реакт ап
+Подготовка к собеседованию!
+- Знать понятия и определения.
+
+
+
+
+
+Конспект по ReactJS (Путь Самурая IT Kamasutra)
+
+
+04. Уроки React JS (create-react-app)
+https://www.youtube.com/watch?v=9Jk8SLMl3gI&list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8&index=4&ab_channel=IT-KAMASUTRA
+
+npx create-react-app my-app
+// my-app
+npm start
+
+
+05. Уроки React JS (SPA: single page application)
+
+06. Уроки React JS (index.js, App, JSX)
+JSX - Рендерит HTML из ReactJS
+	Разметку можно ложить только во один ТЕГ!
+
+Расширения - extension
+
+
+07. Уроки React JS (что такое Компонента)
+Компонента - функция возвращающая разметку (JSX)
+
+08. Уроки React JS (import\export - теория)
+Чтобы обратиться к перменной из другого файла нужно ее импортировать
+import app from './../index.js' //Директория выше
+import app from './yandex.js' //Файл в этой же папке
+
+И в тоже время функцию надо экспортировать из того файла в котором она лежит:
+export default App;
+
+Импорт модулей 
+import React from 'react'; Без Адресации
+
+Импорт стилей
+import './index.css'; // Без FROM
+
+
+10. Уроки React JS (default опасность плагин auto import)
+Для автоипорта нужно установить расширение (Плагин) Auto Import
+
+
+11. Уроки React JS (соц. сеть, шаг 1, вёрстка, grid)
+https://marvelapp.com/prototype/39ef033/screen/52510122
+https://www.youtube.com/watch?v=t6rAzhi3vjQ&list=PLcvhF2Wqh7DNVy1OCUpG3i5lyxyBWhGZ8&index=11&ab_channel=IT-KAMASUTRA
+
+Пример шаблона-макета вот здесь:
+https://codepen.io/anon/pen/oJNVJW
+
+
+.app-wrapper {
+  display: grid;
+
+  grid-template-rows: 60px /*первая строка и ее размеры*/ 1fr /*вторя строка и ее размеры*/; 
+  grid-template-columns: 2fr /*первый столбеци его  размеры*/ 10fr /*второй  столбец и его  размеры*/;
+  grid-gap: 10px; /*Ширина между объектами*/
+
+
+}
+
+.header {
+  grid-area: header;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.content {
+  grid-area: content;
+}
+
+
+12. Уроки React JS (Разбивка на компоненты)
+Просто дробим компоненты по файлам
+
+13. Уроки React JS (git-репозиторий)
+
+git clone https://github.com/it-kamasutra/react-way-of-samurai.git
+
+Для нормального прохождения урока нужно:
+(Нужно знать и отличать что такое версия NODE и что такое вермсия пакетного менеджера npm)
+
+ЧТОБЫ ВСЁ РАБОТАЛО:
+Хочу дополнить мануал-коментарии по актуализации материала двух юзеров Rasul Mamashev и Alex:
+1) Удалить NodeJS 
+2) Скачать и установить Менеджер Версий Ноды nvm (Node Version Manager)
+3) В менеджере Node установить две версии Node: 
+	последнюю стабильную (для себя, для разработки - команда: nvm install lts) и для урока например версию 16.15.1 (команда: nvm install 16.15.1)
+4) Проверяем командой nvm list какие версии установлены
+5) Переключаем наше окружение на старую версию - командой nvm use 16.15.1
+6) Устанавливаем В старый Node еще более старый менеджер пакетов необходимый для урока (команда: npm install -g npm@6.14.10)
+8) Далее В ПАПКЕ С ПРОЕКТОМ не должно быть папки node_modules, если есть то удалить; 
+9) Устанавливем в проек node_modules под 6 версию при помощи "npm install"; 
+10) Чтобы заработало вводим команды: npm i typescript@3.8 --save и npm audit fix
+11) Запускаем наш проект командой npm start и ждём, должно работать. 
+В итоге получаем нормальное рабочее окружение:
+	- Свежий Node и свежий npm 
+	- Старый Node и старый npm 6.14.10 подходящий для урока
+Если нужно переключиться на актуальную версию Node и npm (команда: nvm use xx.xx.x)
+Проверка версий node --version и npm -v
+
+По уроку..
+
+gitk --all&     (открыть графическую оболочку гита, чтобы позырить все коммиты)
+ctrl + insert (копировать в буфер обмена) 
+shift + insert (вставить из буфера обмена) 
+git checkout commit-number (переключится на нужный коммит)
+
+14. Уроки React JS (css-модули, css-modules)
+БЭМ: https://ru.bem.info/methodology/quick-start/
+Стили в React: https://habr.com/ru/company/vk/blog/319956/
+
+
+15. Уроки React JS (структура папок, новые компоненты, улучшаем css)
+Дробим дробим дробим
+
+16. Уроки React JS (props - важнейшая тема) - react курсы бесплатно
+
+
+
+19. Уроки React JS (route, browser-router, маршрутизация) - react курсы бесплатно
+
+*****************Комментарий для исправления****************
+Синтаксис в ролике работает для версии react-router-dom <6
+Для 6 версии синтаксис такой
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+Отличия добивалась функция Routes и пришлось добавить тег <Routes></Routes>  
+<BrowserRouter>
+	<div className='app-booker'>
+		<Header />
+		<NavBar />
+		<div class='app-booker-content'>
+			<Routes>
+				<Route path="/dialog" element= {<Dialogs/>}/>
+				<Route path="/profile" element={<Profile/>}/>
+		</div>
+	</div>
+</BrowserRouter>
+*************************************************************
+	  
+20. Уроки React JS (NavLink) - react курсы бесплатно
+
+Вместо тега <a> с атрибутом href= использовать <NavLink> с атрибутом to=	
+
+********************** Починка ************************	
+
+Медведь в шапке
+Медведь в шапке
+8 месяцев назад (изменено)
+у кого в конце 21го не работает activeClassName - необходимо заменить на 
+className = { navData => navData.isActive ? s.active : s.item }
+
+*************************************************************
+
+
+21. 
+ПОПРОБОВАТЬ ОБРАЗЦЫ ВЕРСТКИ НА САЙТЕ!!!! 
+
+
+22. Уроки React JS (Route exact) - react курсы бесплатно
+Вместо exact теперь ЗВЕЗДОЧКА в конце пути
+
+24. Уроки React JS (UI - BLL, выносим данные в сторону) 
+
+UI - User interface Наши компоненты
+BLL - истина (Data) Buisnes Logik Layer 
+
+The Single Responsibility Principle (SRP)  
+Принцип единой ответственности (SRP) Идея SRP заключается в том, что каждый класс, модуль или функция в программе должны иметь одну ответственность.
+
+
+25. Уроки React JS (метод массива - map) 
+
+Теренарное выражение:
+Было:
+if (isMaleName(el)) {
+	return 1;
+} else {
+	return 0;
+}
+Стало:
+return isMaleName(el) ?  1 : 0;
+
+
+Современная конкатенация JS:
+Было:
+"<li>" + name + "<li>" 
+СталоЖ
+`<li>${name}<li>`
+
+shfift + f6 rename all occurences (Переименовать все переменные)
+
+26. Уроки React JS (структура проекта, ещё раз про ui - bll) 
+
+
+29. Уроки React JS (упаковываем данные в state) - react курсы бесплатно, 2019
+Есть такое понятие ФУНКЦИОНАЛЬНОЕ програмирование это и есть реакт.
+А есть ООП.
+
+Поиск файла ctrl + shift + N 
+Подсказка какие файлы в каталоге ctrl + пробел 
+
+30. Уроки React JS (остановочка "react за час, часть 2")
+*NodeJS
+*SPA
+*Рефакторинг
+*Функциональная компонета/Презентационная(presentational)/без состояния(stateless), тупая(dumb)
+-Это функция которая возвращает JSX разметку
+*Пропсы(props) - Это объекты, передаваемые в компоненту
+*Map - функция (метод для массива), преобразовывает один массив в другой.
+
+
+*классовая компонента
+
+31. Уроки React JS - onClick, ref, VirtualDOM
+* callback - Функция, которую передают, чтобы дочерняя структура могла ее вызвать
+* DOM элементы -
+* VirtualDOM элементы -
+
+
+
+
+
+33. Уроки React JS - добавление поста на стену (зачатки FLUX-концепции)
+ПЕРЕСМОТР НЕСКОЛЬКО РАЗ!!!
+
+FLUX архитектура - надо её понимать.
+
+35. Уроки, Курс React JS - callback, subscribe, observer
+
+ЗНАКОМСТВО С ПАТТЕРНАМИ 14:00 
+observer - первый паттерн.
+Что такое паттерны?
+
+const - функция, которую нельзя изменять. 
+let - переназначаемая функция.
+
+subscribe (подписаться). 
+observer (наблюдатель) 
+
+Внедерение объекта store 
+
+36. Уроки, Курс React JS - про ООП поверхностно (зачем нам объекты)
+Инкапсуляция - Сокрытие объектов.
+
+Нижнее подчеркивание означает, что не нужно обращаться к свойству или методу объекта иззвне.
+Например:
+	Page2.setContent - можно
+	Page2._connect - нельзя
+	
+Внутреннее обращение функции через this например this._content.
+
+37. Уроки, Курс React JS - store, state, ООП, рефакторинг
+Делаем STORE 
+
+
+Объект - набор свойств и методов(функций).
+
+Вызов метода store.getState()
+Передача метода store.getState
+
+39 - Уроки, Курс React JS - action creator, action type
+action - это объект у которого обязательно есть свойство type 
+
+ctrl + alt + shift + J - Найти упоминание объекта
+
+40. Практика и рефакторинг
+Включаем в работу диалоги.
+
+41 - React JS Практика - reducer (почти redux)
+
+action - это объект, у которого обязательно есть свойство type, именно этот объект 
+dispatchат в store.
+
+reducer - это чистая функция, которая принимает state и принимает action, 
+если нужно принимает этот action к этому state или возвращает state который был до этого не изменен.
+
